@@ -64,16 +64,57 @@ pues para eso se hay algunas reglas para usarlo
 
 - para texto dinamicos en JS se utilizaba con backtick `` y poner el dato dinamico dentro de llaves despues de un signo de dolar ${}
 
-    `hola ${nombre de persona a saludar}``
-    NOTA: pongo 2 backtick al final para que lo tome como string el md
+    variable = `hola ${nombre de persona a saludar}``
+
+    - NOTA: pongo 2 backtick al final para que lo tome como string el md
 
 - y ahora para poner textos scripts en el xml tenemos que agruparlo en llaver {}
 
-    {`hola ${nombre de persona a saludar}``}
-    NOTA: las llaves de los backtick y los que almacenan scripts no tienen nada que ver
+    < {`hola ${nombre de persona a saludar}``}  />
+
+    - NOTA: las llaves de los backtick y los que almacenan scripts no tienen nada que ver
 
 - ahora para sacar cada dato del las propiedades (prmps), se hace como si fuera un objeto props.propiedad
 
-    {`hola ${props.nombre}``}
+    < {`hola ${props.nombre}``}  />
 
 y así se hace.
+
+## destructuración de props
+
+como ya lo sabia se pueden destructurar las propiedades del elemento
+
+pero como :0
+
+pues props es un objeto el cual podemos eliminar y quedarnos solo con sus atributos
+
+    const "NombreDelElemento" = (props) => {
+        return (
+            <>
+                <{ ${props.atributo} } />
+            </>
+        )
+    }
+    export default "NombreDelElemento"
+
+    
+    const "NombreDelElemento" = ({atributo}) => {
+        return (
+            <>
+                <{ ${atributo} } />
+            </>
+        )
+    }
+    export default "NombreDelElemento"
+
+- NOTA: si son multiples propiedades tendremos que poner todas en el lugar de estaba props dentro de llaves {}
+
+    const "NombreDelElemento" = ({atributo1,atributo2}) => {
+        return (
+            <>
+                <{ ${atributo1} } />
+                <{ ${atributo2} } />
+            </>
+        )
+    }
+    export default "NombreDelElemento"

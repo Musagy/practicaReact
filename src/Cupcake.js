@@ -1,8 +1,8 @@
-const Cupcake = (props) => {
+const Cupcake = ({sabor,color,url}) => {
     return (
         <div className="cupcake">
-            <h3>{`Esto es un cupcake sabor ${props.sabor} de color ${props.color}`}</h3>
-            <img src={`${props.url}`} alt={`cupcake ${props.color}`} />
+            <h3>{`Esto es un cupcake sabor ${sabor} de color ${color}`}</h3>
+            <img src={url} alt={`cupcake ${color}`} />
         </div>
     )
 }
