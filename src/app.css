@@ -1,0 +1,30 @@
+body{
+    background-color: cadetblue;
+    color: white;
+    padding: 10px;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.cupcake{
+    background-color: rgb(32, 58, 58);
+    padding: 20px;
+    border-radius: 20px;
+}
+h3{
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
