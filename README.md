@@ -70,13 +70,13 @@ pues para eso se hay algunas reglas para usarlo
 
 - y ahora para poner textos scripts en el xml tenemos que agruparlo en llaver {}
 
-    < {`hola ${nombre de persona a saludar}``}  />
+        < {`hola ${nombre de persona a saludar}``}  />
 
     - NOTA: las llaves de los backtick y los que almacenan scripts no tienen nada que ver
 
 - ahora para sacar cada dato del las propiedades (prmps), se hace como si fuera un objeto props.propiedad
 
-    < {`hola ${props.nombre}``}  />
+        < {`hola ${props.nombre}``}  />
 
 y así se hace.
 
@@ -109,12 +109,12 @@ pues props es un objeto el cual podemos eliminar y quedarnos solo con sus atribu
 
 - NOTA: si son multiples propiedades tendremos que poner todas en el lugar de estaba props dentro de llaves {}
 
-    const "NombreDelElemento" = ({atributo1,atributo2}) => {
-        return (
-            <>
-                <{ ${atributo1} } />
-                <{ ${atributo2} } />
-            </>
-        )
-    }
-    export default "NombreDelElemento"
+        const "NombreDelElemento" = ({atributo1,atributo2}) => {
+            return (
+                <>
+                    <{ ${atributo1} } />
+                    <{ ${atributo2} } />
+                </>
+            )
+        }
+        export default "NombreDelElemento"
