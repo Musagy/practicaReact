@@ -11,7 +11,7 @@ Ya sabe el concepto de react asi que no lo voy a poner acá
 
 para hacer un constructor de ese elemento se hace re esta forma
 
-    declaracion de elemento = (parametros) => (XML)
+        declaracion de elemento = (parametros) => (XML)
 
 recordar que se crea de la misma forma que un funcion pero en vez de poner su funcion en {} lo hacemos en ()
 
@@ -19,42 +19,42 @@ recordar que se crea de la misma forma que un funcion pero en vez de poner su fu
 
 ahora en los modulos que queramos hacer los render SIEMPRE TENDREMOS QUE IMPORTA LAS LIBRERIAS DE REACT
 
-    import React from 'react';
-    import ReactDOM from 'react-dom';
+        import React from 'react';
+        import ReactDOM from 'react-dom';
 
 a esta tambien le puedes poner las funciones a llamar y listo, aparte de tambien poner los imports del los elementos
 
-    import {StrictMode} from 'react';
-    import {render} from 'react-dom';
-    import 'elem' from './elem';
+        import {StrictMode} from 'react';
+        import {render} from 'react-dom';
+        import 'elem' from './elem';
 
 ## crear elementos para los constructores y exportarlos
 
 bueno que tal que si ahora, ponemos elementos abstratos
 en construcciones para jsx. pues se hace de la siguiente forma
 
-    const "NombreDelElemento" = (props) => {
-        return (
-            <>
-                <"contenido" />
-            </>
-        )
-    }
-    export default "NombreDelElemento"
+        const "NombreDelElemento" = (props) => {
+            return (
+                <>
+                    <"contenido" />
+                </>
+            )
+        }
+        export default "NombreDelElemento"
 
 - NOTA: su nombre tiene que comenzar con mayuscula, o eso es lo que creo porque me pasaban errores.
 
 ahora para pasarlo al constructor primero se le tiene que importar y despues tienes que poner etiquetas con el nombre del elemento creado, asi
 
-    import "NombreDelElemento"  from "./'NombreDelArchivoDelElemto' ";
+        import "NombreDelElemento"  from "./'NombreDelArchivoDelElemto' ";
 
-    const App = () => (
-    <div>
-        <"NombreDelElemento" prop="valor" />
-    </div>
-    );
+        const App = () => (
+        <div>
+            <"NombreDelElemento" prop="valor" />
+        </div>
+        );
 
-    export default App;
+        export default App;
 
 ## crear contenido dinamico para los elementos
 
@@ -64,7 +64,7 @@ pues para eso se hay algunas reglas para usarlo
 
 - para texto dinamicos en JS se utilizaba con backtick `` y poner el dato dinamico dentro de llaves despues de un signo de dolar ${}
 
-    variable = `hola ${nombre de persona a saludar}``
+        variable = `hola ${nombre de persona a saludar}``
 
     - NOTA: pongo 2 backtick al final para que lo tome como string el md
 
@@ -88,24 +88,24 @@ pero como :0
 
 pues props es un objeto el cual podemos eliminar y quedarnos solo con sus atributos
 
-    const "NombreDelElemento" = (props) => {
-        return (
-            <>
-                <{ ${props.atributo} } />
-            </>
-        )
-    }
-    export default "NombreDelElemento"
+        const "NombreDelElemento" = (props) => {
+            return (
+                <>
+                    <{ ${props.atributo} } />
+                </>
+            )
+        }
+        export default "NombreDelElemento"
 
-    
-    const "NombreDelElemento" = ({atributo}) => {
-        return (
-            <>
-                <{ ${atributo} } />
-            </>
-        )
-    }
-    export default "NombreDelElemento"
+
+        const "NombreDelElemento" = ({atributo}) => {
+            return (
+                <>
+                    <{ ${atributo} } />
+                </>
+            )
+        }
+        export default "NombreDelElemento"
 
 - NOTA: si son multiples propiedades tendremos que poner todas en el lugar de estaba props dentro de llaves {}
 
