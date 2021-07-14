@@ -124,28 +124,28 @@ todo bien, es muy buena su estructura de los componentes por funciones, es como 
 - esta es su estructura
     - primero importamos una clase de react llamada Component
 
-        import { Component } from "react"
+            import { Component } from "react"
 
     - despues declarar una clase, y en ella vamos a hacer que tenga una erencia de Component
     - ¿por que? porque este tiene un metodo para que todo esto funcione el cual es render(), render es lo mismo que hacer una funcion, ahí se pondra todo el return
 
-        class NombreDeComponente extends Component{
-            render() {
+            class NombreDeComponente extends Component{
+                render() {
+                }
             }
-        }
 
     - okey, pero hay algunas cosas que son diferente en clases que en funcion como la escritura de las propiedades
 
-        class NombreDeComponente extends Component{
-            render() {
-                return (
-                    <>
-                        <{ ${this.props.atributo1} } />
-                        <{ ${this.props.atributo2} } />
-                    </>
-                )
+            class NombreDeComponente extends Component{
+                render() {
+                    return (
+                        <>
+                            <{ ${this.props.atributo1} } />
+                            <{ ${this.props.atributo2} } />
+                        </>
+                    )
+                }
             }
-        }
 
     - si, le pusimos this.props antes de la propiedad como si fueran los de una clase obvio.
     - pero date cuenta que todos las propiedades se generar en el atributo props y en el estan los propiedades
