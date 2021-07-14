@@ -3,9 +3,22 @@ import { Component } from "react"
 class Cupcake extends Component{
     constructor(props){
         super(props)
-        this.estado = {
-            vendido: false
+        this.state = {
+            vendido: false,
+            unPitoEnLaBocaDeTuMadre: true
         }
+
+        // preparacion de metodos bind
+        this.comprar = this.comprar.bind(this)
+    }
+
+    // creacion de metodos
+    comprar() {
+        // determinar que lo que sigue es una modificacion a un state dentro de constructor
+        this.setState({
+            vendido: true
+        }
+        )
     }
 
     render() {
@@ -16,17 +29,19 @@ class Cupcake extends Component{
                 <img src={this.props.url} alt={`cupcake ${this.props.color}`} />
                 
                 <p>
-                    <b>Estado del producto: </b>
+                    <b>state del producto: </b>
                     {
-                        this.estado.vendido
+                        this.state.vendido
                         ?
                         "Vendido" : "A la venta"
                     }
                 </p>
                 {
-                    !this.estado.vendido
+                    !this.state.vendido
                     && 
-                    <button>Comprar</button>
+                    <>
+                        <button onClick={this.comprar} >Comprar</button>
+                    </>
                 }
             </div>
         )
@@ -43,3 +58,40 @@ class Cupcake extends Component{
 // }
 
 export default Cupcake
+
+// import { Component } from "react"
+
+// class Cupcake extends Component {
+//     constructor (props) {
+//         super (props)
+//         this.state = {
+//             vendido: false
+//         }
+//         this.vender = this.vender.bind(this)
+//     }
+//     vender(){
+//         this.setState({
+//             vendido: true
+//         })
+//     }
+//     render() { 
+//         return (
+//             <div className="cupcake">
+//                 <p>Esto es un cupcake sabor <b>{`${this.props.sabor}`}</b> de color <b>{`${this.props.color}`}</b></p>
+
+//                 <img src={this.props.url} alt={`cupcake ${this.props.color}`} />
+//                 <p>
+//                     <b>state: </b>
+//                     {
+//                         this.state.vendido ? "vendido" : "a la venta"
+//                     }
+//                 </p>
+//                 {
+//                     !this.state.vendido && <button onClick={this.vender}>vender</button>
+//                 }
+//             </div>
+//         )
+//     }
+// }
+
+// export default Cupcake

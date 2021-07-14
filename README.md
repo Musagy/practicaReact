@@ -211,3 +211,40 @@ acá hay algunas formas que aprendi ahora
     - yo lo pienso como si el codigo nos dijiera que si esto es sierto o exite lo de abajo tambien, pero si no, el otro tampoco
 
 y podran ver el ejemplo por el commit donde README termine en esta linea
+
+### PAPUUUUU IMPORTANTE
+LO QUE ACABAS DE VER ESTA DEL TODO CORRECTO, PERO RECUERDA QUE EN ESTADO SI O SI SE TIENE QUE LLAMAR EN INGLES O SEA "STATE"
+
+NO LO OLVIDES QUE YA HE ESTADO PELEANDO 1 HORA CON REACT PARA DARME CUENTA DEL ERROR, HASTA QUE TUVE QUE COPIAR EL CODIGO DEL PROFESOR PARA INTERCANBIAR SUS PIEZAS PARA DARME CUENTA
+
+ASI QUE SUPONGO QUE SI QUIERES MAS ESTADOS TENDRAS QUE PONERLOS EN SUS LLAVE QUE LLEVA EL ATRIBUTO STATE COMO SI FUERA UN JSON
+
+## lifecycle - ciclo de vida
+
+en react hay algunas funciones que nos ayudaran a identificar los momentos de que tienen los componentes, son 6 y son los siquientes
+
+        componentWillMount(){}
+
+- este es pasa saber cuando se VA a montar un componente
+
+        componentDidMount(){}
+
+- este es para saber cuando un componente YA ESTA montado
+
+        componentWillUpdate(){}
+
+- este es para saber cuando se va a ACTUALIZAR un componente
+
+        componentDidUpdate(){}
+
+- este es para saber cuando un componente YA ESTA actualizaso
+
+        componentWillUnmount(){}
+
+- este es para saber cuando un componente va a ser eliminado
+
+        render(){}
+
+- este lo conocemo y tambien funciona para determinar cuando se esta haciendo cualquier cambio tanto montaje como actualizar
+
+eso si, estos se van a eliminar entre algunos años.
