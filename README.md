@@ -126,7 +126,7 @@ todo bien, es muy buena su estructura de los componentes por funciones, es como 
 
             import { Component } from "react"
 
-    - despues declarar una clase, y en ella vamos a hacer que tenga una erencia de Component
+    - despues declarar una clase, y en ella vamos a hacer que tenga una herencia de Component
     - ¿por que? porque este tiene un metodo para que todo esto funcione el cual es render(), render es lo mismo que hacer una funcion, ahí se pondra todo el return
 
             class NombreDeComponente extends Component{
@@ -152,3 +152,62 @@ todo bien, es muy buena su estructura de los componentes por funciones, es como 
 
 y haciendo esto ya tenemos nuestro cambio de componente de funcion a clase
 
+## estados
+
+los estados del componente son valores que pueden estar true o false (o eso es lo que creo)
+se declaran de la siguiente forma
+
+        class Componente extends Component{
+            constructor(props){
+                super(props)
+                this.estado = {
+                    cosaAAlternar: false o true
+                }
+            }
+        }
+    
+- lo primero que se hace es determinar constructor como en una clase heredera de otra
+- esto es para determinar sus atributos, y como ya estamos determinando constructor, es obligatorio poner super(props) para determinar propiedades
+- NOTA: parece ser que cuando no determinamos constructor, el atributo props ya esta llamado por defecto
+- ahora despues de determinar props, podremos determinar otros atributos, en este caso seran atributos booleanos para crear un estado de si o no
+y esto seria todo
+
+y ahora como los hacemos funcionar
+pues se puede usar con condicionales
+
+acá hay algunas formas que aprendi ahora
+
+        <p>
+            <b>Estado del producto: </b>
+            {
+                this.estado.vendido
+                ?
+                "Vendido" : "A la venta"
+            }
+        </p>
+
+- muy extraño
+    - su sintaxis es asi
+
+            variable con booleano
+            ? <--- funciona como un "if"
+            sí el booleano es TRUE : sí el booleano es FALSE
+
+- y esta es otra
+
+            {
+                !this.estado.vendido
+                && 
+                <button>Comprar</button>
+            }
+
+- tiene el parametro && pero "no tiene nada que ver" o si
+    - esta es la sintaxis como yo la veo
+
+            si esto exite o es true
+            &&
+            esto tambien existe
+
+    - yo lo pienso como si el codigo nos dijiera que si esto es sierto o exite lo de abajo tambien, pero si no, el otro tampoco
+
+y podran ver el ejemplo por el commit donde README termine en esta linea
