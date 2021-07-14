@@ -28,7 +28,7 @@ a esta tambien le puedes poner las funciones a llamar y listo, aparte de tambien
         import {render} from 'react-dom';
         import 'elem' from './elem';
 
-## crear elementos para los constructores y exportarlos
+## crear elementos para los constructores y exportarlos (se llaman conponentes pero acá los llamare por elementos)
 
 bueno que tal que si ahora, ponemos elementos abstratos
 en construcciones para jsx. pues se hace de la siguiente forma
@@ -118,3 +118,37 @@ pues props es un objeto el cual podemos eliminar y quedarnos solo con sus atribu
             )
         }
         export default "NombreDelElemento"
+
+todo bien, es muy buena su estructura de los componentes por funciones, es como lo vamos a llamar ahora y esta piola, pero esto recien surgio hace unos años, antes se usaban los componentes por clases.
+
+- esta es su estructura
+    - primero importamos una clase de react llamada Component
+
+        import { Component } from "react"
+
+    - despues declarar una clase, y en ella vamos a hacer que tenga una erencia de Component
+    - ¿por que? porque este tiene un metodo para que todo esto funcione el cual es render(), render es lo mismo que hacer una funcion, ahí se pondra todo el return
+
+        class NombreDeComponente extends Component{
+            render() {
+            }
+        }
+
+    - okey, pero hay algunas cosas que son diferente en clases que en funcion como la escritura de las propiedades
+
+        class NombreDeComponente extends Component{
+            render() {
+                return (
+                    <>
+                        <{ ${this.props.atributo1} } />
+                        <{ ${this.props.atributo2} } />
+                    </>
+                )
+            }
+        }
+
+    - si, le pusimos this.props antes de la propiedad como si fueran los de una clase obvio.
+    - pero date cuenta que todos las propiedades se generar en el atributo props y en el estan los propiedades
+
+y haciendo esto ya tenemos nuestro cambio de componente de funcion a clase
+
