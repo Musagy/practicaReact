@@ -311,3 +311,23 @@ pero ahora como hacemos funciones para que modifiquen al estado, pues se hace as
             Valor1: true
             Valor2: false
             })
+
+## userEffect
+
+userEffect es una funcion que se ejecuta cuando se actualizan un ante estados determinados
+
+su sitaxis es así
+
+        useEffect( () => {
+            funcion a realizar
+        }, [estados con los que se activara] )
+
+- es muy importante poner el array en el segundo componente de la funcion, PORQUE SI NO SE PONE se va a activar esa funcion en cualquier cambio de cualquier estado
+
+- al poner el array vacio [] estamos diciendo que no se ejecute en ni un momento
+
+claro, esta bien y piola pero como useState tambien se tiene que importar de react
+
+        import { useEffect } from "react"
+
+- en este commit termina acá, puedes ver un ejemplo practico si ejecutas el yarn start en consola

@@ -48,16 +48,23 @@
 //     }
 // }
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const Cupcake = ({sabor,color,url}) => {
-    const [vendido, setVendido] = useState(false)
+    const [vendido, setVendido] = useState(false),
+          [reservado, setReservado] = useState(false)
 
     const comprar = () => {
-        // determinar que lo que sigue es una modificacion a un state dentro de constructor
-        setVendido(true
-        )
+        setVendido(true)
+        setReservado(true)
     }
+
+    const reservar = () => setReservado(true) 
+
+    useEffect( () => {
+        alert("Estamos por iniciar el componente")
+        console.log(Date.now())
+    },)
 
     return (
         <div className="cupcake">
@@ -73,6 +80,13 @@ const Cupcake = ({sabor,color,url}) => {
                     "Vendido" : "A la venta"
                 }
             </p>
+            {
+                !reservado
+                && 
+                <>
+                    <button onClick={reservar} >Reservar</button>
+                </>
+            }
             {
                 !vendido
                 && 
