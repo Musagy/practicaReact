@@ -248,3 +248,66 @@ en react hay algunas funciones que nos ayudaran a identificar los momentos de qu
 - este lo conocemo y tambien funciona para determinar cuando se esta haciendo cualquier cambio tanto montaje como actualizar
 
 eso si, estos se van a eliminar entre algunos años.
+
+## componentes funciones y los hooks
+
+primero que todo tenemos que volver nuestro componente clase a funcion como lo hicimos antes pero a la inversa.
+
+ok, ya que estate daras cuenta que los estados no cuadran en el sistema de las funciones asi que para ello existe una forma
+
+en react existe una funcion llamada useState la cual determinara los estados como lo haciamos con state en las clases
+y se hace asi
+
+        import {useState} from "react"
+
+        const "NombreDelElemento" = ({atributo}) => {
+
+            const ["nombre con el cual quieres llamar al valor del estado, nombre de la funcion que va editarla"] = useState(valor del estado o estados)
+
+            return (
+                <>
+                    <{ ${atributo} } />
+                </>
+            )
+        }
+        export default "NombreDelElemento"
+
+- acá hay algunas especificaciones pero primero hay que mostrar como funcionan
+
+en la constante se van a guardar los estados o un unico estado asi
+
+        1 estado
+        useState(booleano)
+
+        2 o mas estados
+        useState({
+            estado1: booleano,
+            estado2: booleano
+        })
+
+- si, si son mas de 1 se los agrupa en un JSON
+
+y para llamar estos valores se hace asi
+
+        1 estado
+        "el primer valor de la constante de useState"
+
+        2 o mas estados
+        "el primer valor de la constante de useState"."nombre del estado en el JSON"
+
+- es asi porque los JSON son objetos
+
+pero ahora como hacemos funciones para que modifiquen al estado, pues se hace asi
+
+        const "nombre la funcion" = () => {
+            nombre del segundo valor de las constante de useState(revaloriza usando la forma como lo hiciste en la declaracion de useState)
+        }
+
+- ahora una NOTA de buena practica, la cual es que tienes que llamar al segundo valor de la constante useState como el primero pero con un set al principio usando camelcase
+
+        Ejemplo:
+
+        const [algo, setAlgo] = useState({
+            Valor1: true
+            Valor2: false
+            })
