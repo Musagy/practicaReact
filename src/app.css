@@ -11,12 +11,11 @@ body{
 
 .cupcake{
     background-color: rgb(32, 58, 58);
-    padding: 20px;
+    padding: 15px 20px 20px;
     border-radius: 20px;
 }
-h3{
+p{
     margin: 0px;
-    margin-bottom: 10px;
 }
 
 img{
@@ -27,4 +26,8 @@ img{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 10px 0px;
+}
+button{
+    margin-top: 10px;
 }

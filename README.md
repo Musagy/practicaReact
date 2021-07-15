@@ -331,3 +331,38 @@ claro, esta bien y piola pero como useState tambien se tiene que importar de rea
         import { useEffect } from "react"
 
 - en este commit termina acá, puedes ver un ejemplo practico si ejecutas el yarn start en consola
+
+## userRef
+
+userRef no da una referencia en el vitualDOM como lo haria getElementById en el DOM
+
+pero quizas es un poco rebuscado porque tienes que buscarlo en el objeto que te da useRef
+
+por ejemplo, (no lo se solo lo he intentado en img y texto) current es la atributo que te da su elemento en el DOM
+
+a esta funcion tambien se le importa desde react
+
+        import { useRef } from "react"
+
+Pero esto en que nos ayuda, pues como agregarle clases con ajustes en un css externo como la forma practica que hicimos en este commit
+
+pues como selecciono a que elemento quiero editar con esto
+
+pues tienes que ponerlo en la estructuracion del componente con 
+
+        <elemento ref="nombre con el que se referneciara" />
+
+bueno ahora como lo ejecutamos
+
+pues asi
+
+        const "nombre con el que se referneciara" = userRef()
+
+y se implementa poniendolo en cualquier funcion antes pero antes declarando al elemento
+
+        const funcion = () => {
+            const "nombre para el elemento" = "nombre de useRef.current
+            accion de la funcion
+        }
+
+Y en este commit tambien se agregara una forma practica de como hacerlo con clases con 2 elementos

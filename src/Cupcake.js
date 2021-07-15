@@ -48,32 +48,39 @@
 //     }
 // }
 
-import { useState, useEffect } from "react"
+import { useState, useRef } from "react"
+import "./Cupcake.css"
 
 const Cupcake = ({sabor,color,url}) => {
     const [vendido, setVendido] = useState(false),
           [reservado, setReservado] = useState(false)
 
+    const foto = useRef(),
+          texto = useRef()
+
+    const reservar = () => {
+        setReservado(true) 
+        const elTexto = texto.current
+        elTexto.classList.add("reservado")
+    }  
+
     const comprar = () => {
         setVendido(true)
         setReservado(true)
+        const laFoto = foto.current
+        laFoto.classList.add("vendido")
+        const elTexto = texto.current
+        elTexto.classList.remove("reservado")
     }
-
-    const reservar = () => setReservado(true) 
-
-    useEffect( () => {
-        alert("Estamos por iniciar el componente")
-        console.log(Date.now())
-    },)
 
     return (
         <div className="cupcake">
             <p>Esto es un cupcake sabor <b>{`${sabor}`}</b> de color <b>{`${color}`}</b></p>
 
-            <img src={url} alt={`cupcake ${color}`} />
+            <img ref={foto} src={url} alt={`cupcake ${color}`} />
             
             <p>
-                <b>El producto esta: </b>
+                <b ref={texto}>El producto esta: </b>
                 {
                     vendido
                     ?

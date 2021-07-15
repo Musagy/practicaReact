@@ -1,0 +1,7 @@
+.reservado{
+    color: cadetblue;
+}
+
+.vendido {
+    filter: grayscale();
+}
