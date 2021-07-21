@@ -1,12 +1,30 @@
+import "../styles/styles.scss"
 import Header from "../components/header"
 import Banner from "../components/main"
-import "../styles/styles.scss"
+import Pagina1 from "../components/cookiezi";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 const App = () => (
-  <>
+  <Router>
+
     <Header/>
-    <Banner/>
-  </>
+
+    <Switch>
+      
+      <Route path="/pagina1">
+        <Pagina1/>
+      </Route>
+    
+      <Route path="/">
+        <Banner/>
+      </Route>
+
+    </Switch>
+  </Router>
 );
 
 export default App;

@@ -366,3 +366,40 @@ y se implementa poniendolo en cualquier funcion antes pero antes declarando al e
         }
 
 Y en este commit tambien se agregara una forma practica de como hacerlo con clases con 2 elementos
+
+## React Route
+
+es una libreria que nos ayuda mas que todo a optimizar los enlaces de pagina en pagina, con un sistema de peticiones del componente requerido
+
+Toda la documentacion esta acá => https://reactrouter.com/
+
+solo voy a explicar cositar a destacar
+
+para instalarlo con yarn es
+
+        yarn add react-router-dom
+
+y esta sera la estructura deñ import
+
+        import {
+            BrowserRouter as Router,
+            Switch,
+            Route,
+            Link
+        } from "react-router-dom";
+
+tendremos que eliminar los componente que no necesitemos
+
+y por ultimo no olvidar que es muy necesario que la ruta principal "/" tiene que ser colocada al ultimo ya que cuando se busca el caso del Switch lo que busca es que si contiene esa parte y todos las extenciones tendran "/"
+
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/users">
+            <Users />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
