@@ -403,3 +403,113 @@ y por ultimo no olvidar que es muy necesario que la ruta principal "/" tiene que
             <Home />
           </Route>
         </Switch>
+
+## Crear una API y consumirla en react
+
+vamos a crear una API fake con una libreria llamada JSON SERVER
+
+esta es su pagina en npm --> https://www.npmjs.com/package/json-server
+
+se instala de forma global asi que se podra usar en cualquier direccion.
+
+para ejecutarlo tendremos que usar 
+
+        json-server --watch db.json --port NumeroDePuerto
+
+y listo
+
+ahora para poder implementar esta base de datos fake en nuestro proyecto usaremos fetch y then
+
+es la primera vez que uso asi que no soy un experto en eso
+
+bueno, entonces se comienza declarando un estado para la lista de los objetos y esta va a estar al principio de la creacion del componente
+
+        const objetos = () => {
+            const [objeto,setObjeto] = useState([])
+
+            return(
+                componente
+            )
+        }
+
+ahora que ya tenemos el contenedor para la informacion de la BD vamos a traerla asi
+
+        useEffect(() => {
+            fetch ("http://localhost:puerto/NombreDelArchivoDeLaBaseDeDatos")
+                .then(response => response.json())
+                .then(data => console.log(data))
+        }, [])
+
+- primero usamos useEffect para ejecutar esto cuando se cargue la pagina, despues usamos una funcion anonima para poner el fetch
+- este se usa poniendo entre parentesis y comillas ("") la url de la BD 
+- y despues siguen comandos que recien miro como el .then, response y data
+- acá hay mas informacion de como funciona esto --> https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch
+- como yo entiendo la respuesta del fetch es un HTTP y para sacar el JSON se usa el metodo .json(), y es lo que vemos en el primer .then
+- y parece tambien que todo termina almacenado en un tal objeto data, y para verlo usamos console.log(data) como en el segundo .then
+
+ahora con esto podremos almacenar la data en el objeto que determinamos en useState con otro .then, asi
+
+        .then(data => setObjeto(data))
+
+y ya esta
+
+ahora como podemos poner esto en practica poniendolo en practica...
+
+## renderizar contenido con una BD
+
+        const Pagina1 = () => {
+
+            const [caja,setCaja] = useState()
+
+            useEffect(() => {
+                fetch ("http://localhost:puerto/caja")
+                    .then(response => response.json())
+                    .then(data => setCaja(data))
+            }, [])
+
+            return (
+                <div>
+                    {
+                        caja ? (
+                            <section>
+                                {
+                                    caja.map(({
+                                        id,
+                                        atributo1,
+                                        atributo2
+                                    }) => (
+                                        <Item
+                                            key={id}
+                                            atributo1={atributo1}
+                                            atributo2={atributo2}
+                                        />
+                                    ))
+                                }
+                            </section>
+                        ) : (
+                            <span>Cargando...</span>
+                        )
+                    }
+                </div>
+            )
+        }
+
+- despues de hacer todo nuestro codigo de peticion HTTP escribimos el componente que tendria tener una operacion ternaria o tambien puedes usar if() si quieres
+
+- en la primera parte la comprobacion de la existencia del elemento, despues la contruccion del elemento
+
+- en este caso se tiene que usar si o si map para que no altere el array original
+
+- en los atributos es recomendado poner a cada item un id para identificarlo bien esto ira en el atributo key del componente
+
+- despues se escribe el componente con los atributos integrados a el
+
+- y en la tercera parte de la operacion ternaria se pone lo que aparecera cuando no haya cargado, en este caso un texto "Cargando..."
+
+- NOTA: para que funcione la tercera parte es necesario que el useState inicie vacio, o sino se tomara como si ya tuviera algo y no saldria el texto "Cargando..."
+
+### Sintaxis de las operaciones ternarias
+
+        (condicional) ? (si se cumple) : (si no se cumple)
+
+y por ultimo en la creacion del componente en otro archivo tambien se tiene que hacer esta desestructuracion de los atributos
