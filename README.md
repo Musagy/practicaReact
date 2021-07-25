@@ -513,3 +513,73 @@ ahora como podemos poner esto en practica poniendolo en practica...
         (condicional) ? (si se cumple) : (si no se cumple)
 
 y por ultimo en la creacion del componente en otro archivo tambien se tiene que hacer esta desestructuracion de los atributos
+
+## variables de entorno
+
+ya sabemos como renderizar contenido mediante una API pero ahora que pasaria si queremos cambiar la direccion de la API e imagina que ya tienes muchos archivos donde usa esa direccion
+
+pues podrias cambiar una por una de ellas o podrias simplemente guardarlas como variables en un archivo externo
+
+ok, pero esto tiene unos requerimientos
+
+estas variables tienen que ir en un archivo llamado .env.local y tambien un archivo env.example para guardar ahi la de por defecto, este ultimo se guardara en git
+
+y como se nombran estas variables, pues es algo extraña su sintaxis, de lo que antes conocemos de que ni una variable tiene que empezar con mayuscula a hacer componentes con nombres que comienzan en mayuscula, llegamos a estas vareable que son totalmente en mayusculas y separadas por guiones bajos, asi
+
+        NOMBRE_DE_LA_VARIABLE_DE_DIRECCION = "http://laDireccion.com/"
+
+y para implementarlas en los fetch es asi
+
+        useEffect(() => {
+            fetch (`${process.env.NOMBRE_DE_LA_VARIABLE_DE_DIRECCION}extencion`)
+                .then(response => response.json())
+                .then(data => console.log(data))
+        }, [])
+
+- se tiene que poner porcess.env. antes de la vareable para llamarla
+
+- puedes hacer una concatenacion de strings usando backticks`` y poner una extencion despues
+
+podemos usar con un tipo de extencion especial que nos ofrece json-server el cual es
+
+    cajaDeItems?atributo_like=nombreDelAtributo
+
+hay un ejemplo practico en el main de la pagina del proyecto
+
+y esto puede implementarce en una propiedad para el componente por la extencion
+
+
+        const Pagina1 = (extencion) => {
+
+            const [caja,setCaja] = useState()
+
+            useEffect(() => {
+                fetch (`${process.env.NOMBRE_DE_LA_VARIABLE_DE_DIRECCION}${extencion}`)
+                    .then(response => response.json())
+                    .then(data => setCaja(data))
+            }, [extencion])
+        }
+
+- y como buena practica se tiene que poner la propiedad en el array donde van los elementos que detectara su actualizacion
+
+y en cuando escribamos el compomponente lo ponemos como propiedades del mismo, asi
+
+        <Item extencion="cajaDeItems?atributo_like=nombreDelAtributo"/>
+
+y ahora como buena practipa para el fetch tenemos que usar catch
+
+pero papu, no se que es catch y como se usa. no te preocupes crack, tu yo del pasado te lo explicara
+
+catch te servira para determinar el error y se declara con un punto al principio como .then; mira, asi es
+
+    
+        useEffect(() => {
+            fetch (`${process.env.NOMBRE_DE_LA_VARIABLE_DE_DIRECCION}${extencion}`)
+                .then(response => response.json())
+                .then(data => setCaja(data))
+                .catch(err => console.log(err))
+        }, [extencion])
+
+- su propiedad puede ir con cualquier nombre por eso lo he reducido de error
+
+en este caso, si ocurre un error, le decimos que imprima el error en consola

@@ -16,7 +16,7 @@ const App = () => (
     <Switch>
       
       <Route path="/pagina1">
-        <Pagina1/>
+        <Pagina1 peticion="cupcakes"/>
       </Route>
     
       <Route path="/">
