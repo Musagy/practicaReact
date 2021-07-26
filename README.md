@@ -616,3 +616,95 @@ ahora vamos a ver el cambio de la anterios forma con esta forma
 - y tambien vemos que solo ponermos get en vez de fetch, pero ten cuidado que esto solo se puede hacer si lo desestructuramos si usamos la primera forma de importe tendremos que poner como si guera un metodo del Axios, asi
 
         Axios.get(API)
+
+## Creando hooks
+
+esto cada vez se vuelve mas dinamico pero cada ves mas cosas que saber papu
+
+ya sabes el funcionamiento de hooks como useState y useEffect a la perfecion pero en algunos casos esto puede se repetitivo, asi que puedes crear hook con tu propia logica en un archivo js aparte
+
+en este caso hice un hook de peticion HTTP con la libreria axios
+
+        import { useState, useEffect } from "react"
+        import { get } from "axios"
+
+        const useFetch = (endpoint) => {
+
+            const [data,setData] = useState(),
+                  [error,setError] = useState()
+
+            useEffect(() => {
+                get (`${process.env.REACT_APP_URL_API}${endpoint}`)
+                    .then(({ data }) => setData(data))
+                    .catch(e => setError(e))
+            }, [endpoint])
+
+            return [data, error]
+        }
+
+        export default useFetch
+
+- use terminos genericos como data o error
+
+y este hook solo necesita una propiedad la cual seria la extencion a la que se quiere hacer la peticion o llamada tambien endpoint
+
+y si te das cuenta lo que nos retorna sera un array asi que cuando la declaremos tendremos que hacerlo entre corchetes []
+
+        const [nombreParaElObjetoQueTendraLaData, error] = useFetch(peticion)
+
+y listo
+
+## catch y error con los nuestros hooks
+
+lo utilizamos como si fuera un estado comun y corriente
+
+podemos ponerlo en un condicional para que aparesca una alerta que algo a salido mal
+
+        error ?
+            <h1>hubo un error</h1>
+        :
+            <h1>contenido</h1>
+
+en el proyecto esta el componente servicios que lo usa
+
+## prop type
+
+es una libreria de comprobacion de tipo de contenido
+
+esta nos dara alertas cada cuando una propiedad no tenga su tipo adecuado de contenido
+
+se instala asi
+
+        yarn add prop-types
+
+y se ejecuta cuando terminemos el componente con una sintaxis asi
+
+        Componente.propTypes = {
+            numero: PropTypes.number,
+            texto: PropTypes.string,
+            array: PropTypes.array,
+            bool: PropTypes.bool,
+            funcion: PropTypes.func,
+            objeto: PropTypes.object 
+        }
+
+se declaran todos las propiedades de tu componente PropType.tipoDeValor
+
+y para declararla al componente tienes que escribirlo sin mayuscula al principio
+
+y puedes ver mas tipos en su documentacion en npm --> https://www.npmjs.com/package/prop-types
+
+### .Required
+
+tambien si pones a la propiedad una extencion .Required, te saldran errores para los que no tienen esa prop
+
+### .defaultProps
+
+y tambien es una propiedad aparte como el .propTypes
+
+pero en este caso, este nos dara valores por defecto
+
+        perfil.defaultProps = {
+            imagen: "urlDeFotoPorDefecto"
+        }
+
