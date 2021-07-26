@@ -1,4 +1,5 @@
 import Pagina1 from "./cookiezi"
+import Servicios from "./servicios"
 
 const Banner = () => (
     <>
@@ -16,6 +17,7 @@ const Banner = () => (
         </div>
         <br />
         <Pagina1 title peticion="cupcakes?sabor_like=chocomenta"/>
+        <Servicios peticion="servicios"/>
     </>
 )
 export default Banner

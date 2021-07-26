@@ -571,7 +571,6 @@ y ahora como buena practipa para el fetch tenemos que usar catch
 pero papu, no se que es catch y como se usa. no te preocupes crack, tu yo del pasado te lo explicara
 
 catch te servira para determinar el error y se declara con un punto al principio como .then; mira, asi es
-
     
         useEffect(() => {
             fetch (`${process.env.NOMBRE_DE_LA_VARIABLE_DE_DIRECCION}${extencion}`)
@@ -583,3 +582,37 @@ catch te servira para determinar el error y se declara con un punto al principio
 - su propiedad puede ir con cualquier nombre por eso lo he reducido de error
 
 en este caso, si ocurre un error, le decimos que imprima el error en consola
+
+## axios
+
+axios es una libreria que nos facilita las peticiones
+
+        import Axios from "axios"
+
+asi es como se importa
+
+aunque tambien podemos desestructurar los metodos que necesitamos como get, asi
+
+        import { get } from "axios"
+
+ahora vamos a ver el cambio de la anterios forma con esta forma
+    
+        useEffect(() => {
+            fetch (API)
+                .then(response => response.json())
+                .then(data => setCaja(data))
+                .catch(err => console.log(err))
+        }, [])
+    
+        useEffect(() => {
+            get (API)
+                .then(({data}) => setCaja(data))
+                .catch(err => console.log(err))
+        }, [])
+
+- en primera vemos menos codigo
+- ya no necesitamos volver nuestro response en json
+- pero lo que nos devuelve es objeto con nuestra base de datos llamada por defecto data
+- y tambien vemos que solo ponermos get en vez de fetch, pero ten cuidado que esto solo se puede hacer si lo desestructuramos si usamos la primera forma de importe tendremos que poner como si guera un metodo del Axios, asi
+
+        Axios.get(API)

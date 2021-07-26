@@ -1,16 +1,9 @@
-import { useState, useEffect } from "react"
-import { get } from "axios"
 import Cupcake from "./cards/Cupcake"
+import useFetch from "../hooks/useFetch"
 
 const Pagina1 = ({peticion, title}) => {
 
-    const [cupcakes,setCupcakes] = useState()
-
-    useEffect(() => {
-        get (`${process.env.REACT_APP_URL_API}${peticion}`)
-            .then(({ data }) => setCupcakes(data))
-            .catch(e => console.log(e))
-    }, [peticion])
+    const [cupcakes] = useFetch(peticion)
 
     return (
         <div>
