@@ -708,3 +708,25 @@ pero en este caso, este nos dara valores por defecto
             imagen: "urlDeFotoPorDefecto"
         }
 
+### ultima seccion :'( 
+## yarn build
+
+el comando yarn build es para ya exportar el proyecto en un archivos html css y js
+
+este se hace desde la consola o desde git bash como se hace con yarn start
+
+este creara una carpeta llamada build donde estaran todos los archivos de tu pagina web
+
+## conclusion
+
+estaba piola el curso
+
+y por ultimo, para iniciar un nuevo proyecto en react tienes que escribir en consola
+
+        npx create-react-app nombre-del-proyecto
+
+- sin mayusculas y separadas por guiones
+
+y eso seria todo
+
+chau.
